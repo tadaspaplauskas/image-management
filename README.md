@@ -1,6 +1,6 @@
 # Image manager
 
-A bunch of in-progress scripts to manage a mess of my photo collection. It's intended for images, but some scripts (like sort.php) can be used for any kind of files.
+A bunch of in-progress scripts to manage a messy photo collection. It's intended for images, but some scripts (like sort.php) can be used for any kind of files.
 
 Written in PHP and can be run through CLI on any reasonably modern version of PHP.
 
@@ -22,7 +22,7 @@ If previous folder name contains words, they are transformed to tags and stored 
 Becomes two files:
 ```
 ~/Sorted/2000-01-01/IMG_0123.JPG
-~/Sorted/2000-01-01/IMG_0123.JPG.txt > family reunion paris
+~/Sorted/2000-01-01/IMG_0123.JPG.txt > family reunions paris
 ```
 
 Please note that duplicated words, numbers, spacing symbols (-_) are removed and all words are lowercased to keep the noise data down.
