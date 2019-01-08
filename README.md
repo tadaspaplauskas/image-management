@@ -29,4 +29,4 @@ Please note that duplicated words, numbers, spacing symbols (-_) are removed and
 
 This is done so that no data would be lost in the process of reorganizing file structure - you can still use it further down the line.
 
-I chose not to write tags as part of JPEG EXIF data (or similar) to keep compatibility across all kinds of files. Also, modifying files would introduce additional complexity and ruin modified dates.
+I chose not to encode tags as part of JPEG binary data to keep compatibility across all kinds of files. Also, modifying files would introduce additional complexity and ruin modified dates.
