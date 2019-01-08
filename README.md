@@ -1,6 +1,6 @@
 # Image manager
 
-A bunch of in-progress scripts to manage a mess of my photo collection.
+A bunch of in-progress scripts to manage a mess of my photo collection. It's intended for images, but some scripts (like sort.php) can be used for any kind of files.
 
 Written in PHP and can be run through CLI on any reasonably modern version of PHP.
 
