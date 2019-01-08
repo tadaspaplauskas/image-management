@@ -10,7 +10,7 @@ $iterator = new RecursiveIteratorIterator($directory);
 
 foreach ($iterator as $file)
 {
-    if ($file->getFilename() === '.DS_Store') {
+    if (in_array($file->getFilename(), ['.DS_Store', 'Thumbs.db'])) {
         continue;
     }
 
@@ -18,7 +18,12 @@ foreach ($iterator as $file)
 
     $timestamp = getTimestamp($file);
 
-    $newPath = $dest . '/' . $timestamp . '/';
+    if ($timestamp) {
+        $newPath = $dest . '/' . $timestamp . '/';
+    }
+    else {
+        $newPath = $dest . '/unsorted/';
+    }
 
     if (!file_exists($newPath)) {
         mkdir($newPath);
@@ -44,7 +49,14 @@ function getTimestamp($file)
     }
 
     // fallback
-    return date('Y-m-d', $file->getMTime());
+    try {
+        $timestamp = $file->getMTime();
+    }
+    catch (Exception $e) {
+        return null;
+    }
+
+    return date('Y-m-d', $timestamp);
 }
 
 function parseTags($file, $source)
