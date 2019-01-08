@@ -10,6 +10,10 @@ $iterator = new RecursiveIteratorIterator($directory);
 
 foreach ($iterator as $file)
 {
+    if ($file->getFilename() === '.DS_Store') {
+        continue;
+    }
+
     $tags = parseTags($file, $directory);
 
     $timestamp = getTimestamp($file);
@@ -24,10 +28,10 @@ foreach ($iterator as $file)
 
     rename($file->getPathname(), $newPath);
 
-    if (!empty($tags)) {
-        // we're writing additional tags to a separate file to avoid tempering modified date
-        file_put_contents($newPath . '.txt', $tags);
-    }
+    // first line is full path to the source image
+    // second line is extracted tags from the said path
+    // this is done to keep all information from data structure
+    file_put_contents($newPath . '.txt', $file->getPathname() . PHP_EOL . $tags);
 
     echo $file->getPathname() . ' >> ' . $newPath . PHP_EOL;
 }

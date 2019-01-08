@@ -22,8 +22,13 @@ If previous folder name contains words, they are transformed to tags and stored 
 Becomes two files:
 ```
 ~/Sorted/2000-01-01/IMG_0123.JPG
-~/Sorted/2000-01-01/IMG_0123.JPG.txt > family reunions paris
+~/Sorted/2000-01-01/IMG_0123.JPG.txt >
+    Users/user/Pictures/Family/Family reunions/Paris 2000/IMG_0123.JPG
+    family reunions paris
 ```
+The first line represents complete previous path.
+
+Second line is extracted tags.
 
 Please note that duplicated words, numbers, spacing symbols (-_) are removed and all words are lowercased to keep the noise data down.
 
