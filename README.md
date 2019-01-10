@@ -11,27 +11,15 @@ Use it:
 ./sort.php ~/Pictures ~/Sorted
 ```
 
-It will recursively move all files from the source directory to a destination directory subfolder based on EXIF `DateTimeOriginal` or modified date. New file structure will be as follows: `~/Sorted/yyyy-mm-dd/original-filename`.
-
-If previous folder name contains words, they are transformed to tags and stored right next to the original image file. Example:
+It will recursively move all files from the source directory to one destination directory. EXIF `DateTimeOriginal` OR modified date (as a fallback) becomes filename prefix. The rest of the filename is tags extracted from old file path.
 
 ```
 ~/Pictures/Family/Family reunions/Paris 2000/IMG_0123.JPG
 ```
 
-Becomes two files:
+Becomes:
 ```
-~/Sorted/2000-01-01/IMG_0123.JPG
-~/Sorted/2000-01-01/IMG_0123.JPG.txt >
-    Users/user/Pictures/Family/Family reunions/Paris 2000/IMG_0123.JPG
-    family reunions paris
+~/Sorted/2000-01-01 16.05.45 family reunions paris.JPG
 ```
-The first line represents complete previous path.
 
-Second line is extracted tags.
-
-Please note that duplicated words, numbers, spacing symbols (-_) are removed and all words are lowercased to keep the noise data down.
-
-This is done so that no data would be lost in the process of reorganizing file structure - you can still use it further down the line.
-
-I chose not to encode tags as part of JPEG binary data to keep compatibility across all kinds of files. Also, modifying files would introduce additional complexity and ruin modified dates.
+Please note that duplicated words, numbers, spacing symbols (-_) are removed from tags and all words are lowercased to keep the noise down and search-ability up.
